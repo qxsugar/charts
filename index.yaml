@@ -3,6 +3,16 @@ entries:
   app:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-11-15T16:00:02.161815092Z"
+    description: A Helm chart for Kubernetes
+    digest: 7bd2aee6edb5ed84a360c2f36d3f91db52136d1bbc571d70892758c92cd8f8d1
+    name: app
+    type: application
+    urls:
+    - https://github.com/qxsugar/charts/releases/download/app-0.1.2/app-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-11-15T15:57:18.120587153Z"
     description: A Helm chart for Kubernetes
     digest: db2660773dff6a8cbe6d31252cf8d4443086cdb6876ec51590c58ba61f90b4f9
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://github.com/qxsugar/charts/releases/download/app-0.1.0/app-0.1.0.tgz
     version: 0.1.0
-generated: "2021-11-15T15:57:18.120604253Z"
+generated: "2021-11-15T16:00:02.161827592Z"
