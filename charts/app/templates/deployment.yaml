@@ -35,20 +35,19 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
-                name: {{.Values.configMap.name}}
-
+                name: {{ include "app.fullname" . }}
+          {{- with .Values.deploy.ports}}
           ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
+          {{- toYaml . | nindent 12}}
+          {{- end }}
+          {{- with .Values.deploy.livenessProbe}}
           livenessProbe:
-            httpGet:
-              path: /
-              port: http
+          {{- toYaml .| nindent 12}}
+          {{- end }}
+          {{- with .Values.deploy.readinessProbe}}
           readinessProbe:
-            httpGet:
-              path: /
-              port: http
+          {{- toYaml . | nindent 12}}
+          {{- end }}
           resources:
       {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

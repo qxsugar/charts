@@ -5,12 +5,25 @@
 # config
 configMap:
   enabled: true
-  name: ""
   values:
     - key: foor
       value: bar
 
 replicaCount: 1
+
+deploy:
+  ports:
+    - name: "http"
+      containerPort: 80
+      protocol: TCP
+  livenessProbe:
+    httpGet:
+      path: /
+      port: http
+  readinessProbe:
+    httpGet:
+      path: /
+      port: http
 
 image:
   repository: nginx

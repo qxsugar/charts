@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{.Values.configMap.name}}
+  name: {{ include "app.fullname" . }}
 data:
   {{- range .Values.configMap.values }}
   "{{.key}}": "{{.value}}"
