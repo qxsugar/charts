@@ -1,20 +1,22 @@
-## Usage
+自定义Charts
+-------------------------------
 
-[Helm](https://helm.sh) must be installed to use the charts.  Please refer to
-Helm's [documentation](https://helm.sh/docs) to get started.
+### 更新版本
 
-Once Helm has been set up correctly, add the repo as follows:
+> 修改`charts/app/Chart.yaml`的`version`，github action会自动打包
 
-helm repo add <alias> https://me.ppapi.cn/charts
+### 添加仓库
 
-If you had already added this repo earlier, run `helm repo update` to retrieve
-the latest versions of the packages.  You can then run `helm search repo
-<alias>` to see the charts.
+> helm repo add {alias} https://me.ppapi.cn/charts
 
-To install the <chart-name> chart:
+### 更新仓库
 
-    helm install my-<chart-name> <alias>/<chart-name>
+> helm repo update
 
-To uninstall the chart:
+### 搜索安装包
 
-    helm delete my-<chart-name>
+> helm search repo {appName}
+
+### 安装应用
+
+> helm install {chartName} {alias}/{appName}
