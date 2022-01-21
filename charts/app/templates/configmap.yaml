@@ -1,8 +1,10 @@
+{{- if .Values.configMap.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "app.fullname" . }}
 data:
   {{- range .Values.configMap.values }}
-  "{{.key}}": "{{.value}}"
-  {{- end }}
+  "{{.name}}": "{{.value}}"
+  {{end}}
+{{- end }}
