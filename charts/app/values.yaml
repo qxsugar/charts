@@ -6,7 +6,6 @@ configMap:
       value: bar
 
 # deployment
-
 replicaCount: 1
 image:
   repository: nginx
@@ -20,6 +19,9 @@ strategy:
   rollingUpdate:
     maxUnavailable: 0
     maxSurge: 3
+
+command: [ ]
+args: [ ]
 
 terminationGracePeriodSeconds: 30
 
