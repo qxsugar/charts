@@ -3,6 +3,16 @@ entries:
   app:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-01-21T10:13:18.497445538Z"
+    description: 通用api部署charts
+    digest: 2dbdd4263269e15679701722ac6e8aeaa9969b6b094f755933e801ab10cc3de9
+    name: app
+    type: application
+    urls:
+    - https://github.com/qxsugar/charts/releases/download/app-0.1.8/app-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-01-21T10:11:10.030749038Z"
     description: 一个通用api部署
     digest: e4f1e8393616dbd7c634048bfbc0630e6f582c711cef6c3e9ad06d487e7d8c8d
@@ -74,6 +84,16 @@ entries:
   cronjob:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-01-21T10:13:18.647040133Z"
+    description: 通用cronjob部署charts
+    digest: b4d7e31abd4431c920e438ba311c5fc8963a89394f11c1eb95ab9f49aff828ec
+    name: cronjob
+    type: application
+    urls:
+    - https://github.com/qxsugar/charts/releases/download/cronjob-0.1.2/cronjob-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-01-21T10:11:10.187131859Z"
     description: A Helm chart for Kubernetes
     digest: 50966fa819c78a8353a843cafceeaa2913263023137755b62213696df76f2941
@@ -92,4 +112,4 @@ entries:
     urls:
     - https://github.com/qxsugar/charts/releases/download/cronjob-0.1.0/cronjob-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-21T10:11:10.187165059Z"
+generated: "2022-01-21T10:13:18.647797741Z"
