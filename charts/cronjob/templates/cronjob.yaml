@@ -1,0 +1,85 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "cronjob.fullname" . }}
+  labels:
+  {{- include "cronjob.labels" . | nindent 4 }}
+spec:
+  schedule: {{ .Values.schedule }}
+  concurrencyPolicy: {{ .Values.concurrencyPolicy }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: {{ .Values.restartPolicy }}
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.initContainers }}
+          initContainers:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
+          containers:
+            - name: {{ .Values.appName | default .Release.Name }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              {{- with .Values.command }}
+              command:
+              {{- toYaml . | nindent 16 }}
+              {{- end }}
+
+              {{- with .Values.args }}
+              args:
+              {{- toYaml . | nindent 16}}
+              {{- end }}
+
+              {{- with .Values.livenessProbe }}
+              livenessProbe:
+              {{- toYaml . | nindent 16 }}
+              {{- end }}
+
+              {{- with .Values.readinessProbe }}
+              readinessProbe:
+              {{- toYaml . | nindent 16 }}
+              {{- end }}
+              securityContext:
+              {{- toYaml .Values.securityContext | nindent 16 }}
+              resources:
+              {{- toYaml .Values.resources | nindent 16 }}
+
+              {{- if .Values.configMap.enabled }}
+              envFrom:
+                - configMapRef:
+                    name: {{ include "cronjob.fullname" . }}
+              {{- end }}
+
+              {{- with .Values.environments }}
+              env:
+              {{- toYaml . | nindent 16 }}
+              {{- end }}
+
+              {{- with .Values.volumeMounts}}
+              volumeMounts:
+          {{- toYaml . | nindent 16 }}
+          {{- end }}
+
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          {{- with .Values.affinity }}
+          affinity:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          {{- with .Values.tolerations }}
+          tolerations:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          {{- with .Values.volumes}}
+          volumes:
+          {{- toYaml . | nindent 12 }}
+          {{- end}}

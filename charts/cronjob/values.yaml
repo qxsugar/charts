@@ -1,0 +1,67 @@
+# config map
+configMap:
+  enabled: false
+  values:
+    - name: foor
+      value: bar
+
+# cronjob
+#          ┌───────────── minute (0 - 59)
+#          │ ┌───────────── hour (0 - 23)
+#          │ │ ┌───────────── day of the month (1 - 31)
+#          │ │ │ ┌───────────── month (1 - 12)
+#          │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
+#          │ │ │ │ │                                   7 is also Sunday on some systems)
+#          │ │ │ │ │
+#          │ │ │ │ │
+#          0 * *  * * <command to execute>
+schedule: "1 0 * * *"
+concurrencyPolicy: Allow # Allow,Forbid,Replace
+
+restartPolicy: Never
+imagePullSecrets: [ ]
+
+initContainers: [ ]
+
+appName: app
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  tag: ""
+
+command: [ ]
+args: []
+
+livenessProbe:
+#  httpGet:
+#    path: /
+#    port: http
+
+readinessProbe:
+#  httpGet:
+#    path: /
+#    port: http
+
+securityContext: { }
+
+resources: { }
+#  limits:
+#    cpu: 200m
+#    memory: 256Mi
+#  requests:
+#    cpu: 100m
+#    memory: 128Mi
+
+environments: [ ]
+
+volumeMounts: { }
+volumes: { }
+
+podSecurityContext: { }
+
+nodeSelector: { }
+
+tolerations: [ ]
+
+affinity: { }

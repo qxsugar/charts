@@ -1,6 +1,8 @@
 自定义Charts
 -------------------------------
 
+![release](https://github.com/qxsugar/charts/actions/workflows/release.yml/badge.svg)
+
 ### 更新版本
 
 > 修改`charts/app/Chart.yaml`的`version`，github action会自动打包
