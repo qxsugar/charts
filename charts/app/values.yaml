@@ -81,6 +81,11 @@ readinessProbe:
 service:
   type: ClusterIP
   port: 80
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
 
 # ingress
 ingress:
@@ -105,4 +110,4 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
-#  targetMemoryUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80

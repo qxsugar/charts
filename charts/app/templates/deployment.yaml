@@ -30,23 +30,27 @@ spec:
       {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "app.serviceAccountName" . }}
+      {{- with .Values.podSecurityContext }}
       securityContext:
-      {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Values.appName | default .Release.Name }}
+          {{- with .Values.securityContext }}
           securityContext:
-          {{- toYaml .Values.securityContext | nindent 12 }}
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
 
           {{- with .Values.command }}
           command:
-            {{- toYaml . | nindent 12 }}
+          {{- toYaml . | nindent 12 }}
           {{- end }}
 
           {{- with .Values.args }}
           args:
-            {{- toYaml . | nindent 12}}
+          {{- toYaml . | nindent 12}}
           {{- end }}
 
           {{- if .Values.configMap.enabled }}
@@ -57,7 +61,7 @@ spec:
 
           {{- with .Values.environments }}
           env:
-            {{- toYaml . | nindent 12}}
+          {{- toYaml . | nindent 12}}
           {{- end }}
 
           {{- with .Values.ports}}
