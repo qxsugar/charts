@@ -1,0 +1,2 @@
+### 欢迎使用helm管理job
+1. 具体配置参考values.yaml

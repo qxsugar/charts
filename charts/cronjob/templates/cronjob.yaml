@@ -22,7 +22,7 @@ spec:
           {{- end }}
           containers:
             - name: {{ .Values.appName | default .Release.Name }}
-              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               {{- with .Values.command }}
               command:
@@ -43,11 +43,14 @@ spec:
               readinessProbe:
               {{- toYaml . | nindent 16 }}
               {{- end }}
+              {{- with .Values.securityContext }}
               securityContext:
-              {{- toYaml .Values.securityContext | nindent 16 }}
+              {{- toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with .Values.resources }}
               resources:
-              {{- toYaml .Values.resources | nindent 16 }}
-
+              {{- toYaml . | nindent 16 }}
+              {{- end }}
               {{- if .Values.configMap.enabled }}
               envFrom:
                 - configMapRef:
@@ -61,8 +64,8 @@ spec:
 
               {{- with .Values.volumeMounts}}
               volumeMounts:
-          {{- toYaml . | nindent 16 }}
-          {{- end }}
+              {{- toYaml . | nindent 16 }}
+              {{- end }}
 
           {{- with .Values.nodeSelector }}
           nodeSelector:
