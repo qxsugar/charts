@@ -84,6 +84,16 @@ entries:
   cronjob:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-02-28T03:34:16.571330373Z"
+    description: 使用heml管理cronjob
+    digest: 7875ffcd56421e9b84a9516844982868f9b452e151609705bf992fa05a7dd7b6
+    name: cronjob
+    type: application
+    urls:
+    - https://github.com/qxsugar/charts/releases/download/cronjob-0.1.3/cronjob-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-01-21T10:13:18.647040133Z"
     description: 通用cronjob部署charts
     digest: b4d7e31abd4431c920e438ba311c5fc8963a89394f11c1eb95ab9f49aff828ec
@@ -112,4 +122,4 @@ entries:
     urls:
     - https://github.com/qxsugar/charts/releases/download/cronjob-0.1.0/cronjob-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-21T10:13:18.647797741Z"
+generated: "2022-02-28T03:34:16.571382274Z"
