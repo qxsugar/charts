@@ -9,8 +9,7 @@
 
 ### 添加仓库
 
-> helm repo add {alias} https://me.ppapi.cn/charts
-
+> helm repo add {alias} https://qxsugar.github.io/charts/
 ### 更新仓库
 
 > helm repo update
